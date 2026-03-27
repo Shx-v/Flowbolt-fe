@@ -1,99 +1,148 @@
-# React + Vite
+# ⚛️ FlowBolt Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules. This use Material UI for components.
-
----
-
-## Empty-Template
-
-*This section is a placeholder for further instructions or description about this empty template.*
+Frontend application for **FlowBolt**, a task & ticket management system. Built with **React + Vite + Material UI**, focused on performance, scalability, and maintainable UI architecture.
 
 ---
 
-## Table of Contents
-
-- [Introduction](#introduction)  
-- [Features](#features)  
-- [Installation](#installation)  
-- [Usage](#usage)  
-- [Configuration](#configuration)  
-- [Contributing](#contributing)  
-- [License](#license)  
-- [Contact](#contact)  
-
----
-
-## Introduction
-
-This repository provides a minimal and clean starter template for React projects using Vite as the build tool. It includes fast hot module reloading (HMR) and ESLint setup for code quality.
-
----
-
-## Features
-
-- React 18+ support with Vite  
-- Fast Refresh powered by Babel or SWC plugin  
-- ESLint pre-configured with recommended rules  
-- Lightweight and minimal, easy to expand
-
----
-
-## Installation
-
-To get started with this template, clone the repository and install dependencies:
+## 🚀 Quick Start
 
 ```bash
-git clone https://github.com/Shx-v/Empty-Template.git
-cd Empty-Template
+git clone https://github.com/Shx-v/Flowbolt-fe.git
+cd flowbolt-fe
 npm install
-# or
-yarn install
+npm run dev
 ```
+
+App runs at:
+
+```bash
+http://localhost:5173
+```
+
 ---
 
-## Usage
+## 📦 Scripts
 
-Run the development server with hot reloading:
 ```bash
+# Start development server
 npm run dev
-# or
-yarn dev
+
+# Build for production
+npm run build
+
+# Preview production build
+npm run preview
+
+# Lint code
+npm run lint
 ```
 
-Build the project for production:
+---
+
+## 🧱 Tech Stack
+
+* **React 18+**
+* **Vite**
+* **Material UI (MUI)**
+* **Emotion (styling)**
+* **ESLint**
+
+---
+
+## 📁 Project Structure
+
+```bash
+src/
+├── components/        # Reusable UI components
+├── pages/             # Feature-level pages (Dashboard, Tickets, etc.)
+├── hooks/             # Custom hooks
+├── services/          # API layer (Axios / fetch wrappers)
+├── store/             # Global state management (if used)
+├── routes/            # Route configuration
+├── layouts/           # Layouts (dashboard, auth, etc.)
+├── theme/             # MUI theme setup
+├── utils/             # Helpers & constants
+├── App.jsx
+└── main.jsx
+```
+
+---
+
+## ⚙️ Architecture
+
+* **Component-driven design** with reusable UI blocks
+* **Centralized API layer** for backend communication
+* **Separation of concerns** across pages, services, and UI
+* **Theme-based styling** using MUI
+* Designed to support **dynamic forms, workflows, and dashboards**
+
+---
+
+## 🔗 Backend Integration
+
+This frontend depends on the FlowBolt backend APIs:
+
+👉 https://flowbolt-be.onrender.com/api/v1/webjars/swagger-ui/index.html
+
+Ensure backend is running and accessible.
+
+---
+
+## 🌍 Environment Variables
+
+Create a `.env` file:
+
+```bash
+VITE_API_BASE_URL=http://localhost:8080
+```
+
+---
+
+## 🧩 Features Supported
+
+* Project & ticket management UI
+* Workflow-based status transitions
+* Role-based UI rendering (based on permissions)
+* Dashboard with ticket insights
+* Dynamic forms (based on backend configurations)
+
+---
+
+## 🧪 Code Quality
+
+* ESLint configured with React + Hooks rules
+* Consistent folder structure
+* Scalable for large feature additions
+
+---
+
+## 🚀 Build & Deployment
+
 ```bash
 npm run build
-# or
-yarn build
 ```
-Preview the production build locally:
+
+Output directory:
+
 ```bash
-npm run preview
-# or
-yarn preview
+dist/
 ```
 
----
+Deploy using:
 
-## Configuration
-- ESLint is preconfigured with React and React Hooks rules.
-- Material UI is included with emotion for styling and icons.
-- Customize Vite config in vite.config.js.
-
----
-
-## Contributing
-- Contributions are welcome! Please fork the repo and submit pull requests.
+* Nginx
+* AWS S3 + CloudFront
+* Vercel / Netlify
 
 ---
 
-## License
-This project is licensed under the MIT License. See the LICENSE file for details.
+## 📄 License
+
+MIT License
 
 ---
 
-## Contact
-Your Name – shivranjanbharadwaj@gmail.com
-Project Link: https://github.com/Shx-v/Empty-Template
+## 📬 Contact
 
----
+Shivranjan Bharadwaj
+📧 [shivranjanbharadwaj@gmail.com](mailto:shivranjanbharadwaj@gmail.com)
