@@ -3,7 +3,6 @@ import WidgetsIcon from "@mui/icons-material/Widgets";
 import FormatListBulletedIcon from "@mui/icons-material/FormatListBulleted";
 import ManageAccountsIcon from "@mui/icons-material/ManageAccounts";
 import GroupIcon from "@mui/icons-material/Group";
-import GroupsIcon from "@mui/icons-material/Groups";
 import { useAuth } from "../Context/AuthContext";
 
 export const useRoutes = () => {
@@ -27,9 +26,9 @@ export const useRoutes = () => {
 
   const common = [
     {
-      title: "Groups",
-      path: "/group",
-      icon: <GroupsIcon />,
+      title: "Dashboard",
+      path: "/dashboard",
+      icon: <DashboardIcon />,
     },
     {
       title: "Projects",
@@ -43,16 +42,7 @@ export const useRoutes = () => {
     },
   ];
 
-  if (isAdmin)
-    return [
-      {
-        title: "Dashboard",
-        path: "/dashboard",
-        icon: <DashboardIcon />,
-      },
-      ...adminOnly,
-      ...common,
-    ];
+  if (isAdmin) return [...common, ...adminOnly];
 
   return common;
 };

@@ -12,6 +12,7 @@ import { toast } from "react-toastify";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../Context/AuthContext";
+import { apiVersion, baseUrl } from "../../Config/EnvironmentConfig";
 
 const DeleteProject = ({ open, onClose, data }) => {
   const navigate = useNavigate();
@@ -20,7 +21,7 @@ const DeleteProject = ({ open, onClose, data }) => {
   const handleDelete = async () => {
     try {
       const response = await axios.delete(
-        `https://flowbolt-mono-be.onrender.com/api/v1/project/${data?.id}`,
+        `${baseUrl}/${apiVersion}/project/${data?.id}`,
         {
           headers: {
             Authorization: `Bearer ${accessToken}`,

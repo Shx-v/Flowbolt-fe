@@ -15,6 +15,7 @@ import { useFormik } from "formik";
 import { toast } from "react-toastify";
 import * as yup from "yup";
 import { useAuth } from "../../Context/AuthContext";
+import { apiVersion, baseUrl } from "../../Config/EnvironmentConfig";
 
 const EditProject = ({ open, onClose, handleRefresh, data }) => {
   const { accessToken } = useAuth();
@@ -22,7 +23,7 @@ const EditProject = ({ open, onClose, handleRefresh, data }) => {
   const handleUpdateProject = async () => {
     try {
       const response = await axios.put(
-        `https://flowbolt.onrender.com/api/v1/project/${data?.id}`,
+        `${baseUrl}/${apiVersion}/project/${data?.id}`,
         {
           name: formik.values.name,
           projectCode: formik.values.code,

@@ -12,6 +12,7 @@ import * as Yup from "yup";
 import { useFormik } from "formik";
 import { toast } from "react-toastify";
 import axios from "axios";
+import { apiVersion, baseUrl } from "../../Config/EnvironmentConfig";
 
 const CreateUser = ({ open, onClose, handleRefresh }) => {
   const { accessToken } = useAuth();
@@ -77,7 +78,7 @@ const CreateUser = ({ open, onClose, handleRefresh }) => {
   const handleCreateUser = async (values) => {
     try {
       const response = await axios.post(
-        "https://flowbolt.onrender.com/api/v1/auth/register",
+        `${baseUrl}/${apiVersion}/auth/register`,
         values,
         {
           headers: {
@@ -101,14 +102,11 @@ const CreateUser = ({ open, onClose, handleRefresh }) => {
 
   const handleGetRoles = async () => {
     try {
-      const response = await axios.get(
-        "https://flowbolt.onrender.com/api/v1/role",
-        {
-          headers: {
-            Authorization: `Bearer ${accessToken}`,
-          },
+      const response = await axios.get(`${baseUrl}/${apiVersion}/role`, {
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
         },
-      );
+      });
 
       if (response.data.success) {
         setRoles(response.data.data);

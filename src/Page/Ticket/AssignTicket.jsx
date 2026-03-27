@@ -13,6 +13,7 @@ import { useFormik } from "formik";
 import { toast } from "react-toastify";
 import * as yup from "yup";
 import { useAuth } from "../../Context/AuthContext";
+import { apiVersion, baseUrl } from "../../Config/EnvironmentConfig";
 
 const AssignTicket = ({ open, onClose, handleRefresh, ticket, users }) => {
   const { accessToken } = useAuth();
@@ -20,7 +21,7 @@ const AssignTicket = ({ open, onClose, handleRefresh, ticket, users }) => {
   const handleAssignTicket = async (values) => {
     try {
       const response = await axios.patch(
-        `https://flowbolt.onrender.com/api/v1/ticket/assignee`,
+        `${baseUrl}/${apiVersion}/ticket/assignee`,
         {
           ticketId: ticket.id,
           assignee: values.assignedTo,

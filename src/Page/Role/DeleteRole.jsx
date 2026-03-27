@@ -11,6 +11,7 @@ import axios from "axios";
 import React from "react";
 import { useAuth } from "../../Context/AuthContext";
 import { toast } from "react-toastify";
+import { apiVersion, baseUrl } from "../../Config/EnvironmentConfig";
 
 const DeleteRole = ({ open, onClose, handleRefresh }) => {
   const { accessToken } = useAuth();
@@ -18,7 +19,7 @@ const DeleteRole = ({ open, onClose, handleRefresh }) => {
   const handleDelete = async () => {
     try {
       const response = await axios.delete(
-        `https://flowbolt.onrender.com/api/v1/role/${open?.id}`,
+        `${baseUrl}/${apiVersion}/role/${open?.id}`,
         {
           headers: {
             Authorization: `Bearer ${accessToken}`,

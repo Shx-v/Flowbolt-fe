@@ -32,6 +32,7 @@ import DoNotDisturbOnIcon from "@mui/icons-material/DoNotDisturbOn";
 import { Link as RouterLink } from "react-router-dom";
 import dayjs from "dayjs";
 import CreateProject from "./CreateProject";
+import { apiVersion, baseUrl } from "../../Config/EnvironmentConfig";
 
 const Project = () => {
   const { accessToken, userDetails } = useAuth();
@@ -96,7 +97,7 @@ const Project = () => {
   const handleGetProjects = async () => {
     try {
       const response = await axios.get(
-        "https://flowbolt.onrender.com/api/v1/project",
+        `${baseUrl}/${apiVersion}/project`,
         {
           headers: {
             Authorization: `Bearer ${accessToken}`,
@@ -118,7 +119,7 @@ const Project = () => {
   const handleGetUsers = async () => {
     try {
       const response = await axios.get(
-        "https://flowbolt.onrender.com/api/v1/user/list",
+        `${baseUrl}/${apiVersion}/user/list`,
         {
           headers: {
             Authorization: `Bearer ${accessToken}`,

@@ -17,6 +17,7 @@ import { useAuth } from "../../Context/AuthContext";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 import dayjs from "dayjs";
 import { useMemo } from "react";
+import { apiVersion, baseUrl } from "../../Config/EnvironmentConfig";
 
 const EditTicket = ({ open, onClose, handleRefresh, ticket }) => {
   const { accessToken } = useAuth();
@@ -24,7 +25,7 @@ const EditTicket = ({ open, onClose, handleRefresh, ticket }) => {
   const handleUpdateTicket = async (values) => {
     try {
       const response = await axios.put(
-        `https://flowbolt.onrender.com/api/v1/ticket/${ticket?.id}`,
+        `${baseUrl}/${apiVersion}/ticket/${ticket?.id}`,
         {
           title: values.title,
           description: values.description,

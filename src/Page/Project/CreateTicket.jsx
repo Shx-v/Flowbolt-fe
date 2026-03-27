@@ -13,6 +13,7 @@ import { toast } from "react-toastify";
 import * as yup from "yup";
 import { useAuth } from "../../Context/AuthContext";
 import { useEffect, useState } from "react";
+import { apiVersion, baseUrl } from "../../Config/EnvironmentConfig";
 
 const CreateTicket = ({ open, onClose, handleRefresh, data, users }) => {
   const { accessToken } = useAuth();
@@ -21,7 +22,7 @@ const CreateTicket = ({ open, onClose, handleRefresh, data, users }) => {
   const handleCreateTicket = async (values) => {
     try {
       const response = await axios.post(
-        "https://flowbolt.onrender.com/api/v1/ticket",
+        `${baseUrl}/${apiVersion}/ticket`,
         {
           project: data?.id,
           title: values.title,
@@ -90,7 +91,7 @@ const CreateTicket = ({ open, onClose, handleRefresh, data, users }) => {
   const handleGetTicketTypes = async () => {
     try {
       const response = await axios.get(
-        "https://flowbolt.onrender.com/api/v1/ticket/types",
+        `${baseUrl}/${apiVersion}/ticket/types`,
         {
           headers: {
             Authorization: `Bearer ${accessToken}`,

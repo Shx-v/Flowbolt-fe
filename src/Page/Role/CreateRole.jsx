@@ -20,6 +20,7 @@ import React, { useEffect, useState } from "react";
 import * as Yup from "yup";
 import { useAuth } from "../../Context/AuthContext";
 import { toast } from "react-toastify";
+import { apiVersion, baseUrl } from "../../Config/EnvironmentConfig";
 
 const PopperComponent = (props) => (
   <Popper
@@ -84,7 +85,7 @@ const CreateRole = ({ open, onClose, handleRefresh, permissions }) => {
   const handleCreateRole = async (values) => {
     try {
       const response = await axios.post(
-        "https://flowbolt.onrender.com/api/v1/role",
+        `${baseUrl}/${apiVersion}/role`,
         values,
         {
           headers: {

@@ -16,6 +16,7 @@ import * as yup from "yup";
 import { useAuth } from "../../Context/AuthContext";
 import axios from "axios";
 import { toast } from "react-toastify";
+import { apiVersion, baseUrl } from "../../Config/EnvironmentConfig";
 
 const AddMember = ({
   open,
@@ -54,7 +55,7 @@ const AddMember = ({
   const handleAddMember = async (values) => {
     try {
       const response = await axios.post(
-        `https://flowbolt.onrender.com/api/v1/project-member`,
+        `${baseUrl}/${apiVersion}/project-member`,
         values,
         {
           headers: {
@@ -84,7 +85,7 @@ const AddMember = ({
   const handleGetGroups = async () => {
     try {
       const response = await axios.get(
-        `https://flowbolt.onrender.com/api/v1/group/list`,
+        `${baseUrl}/${apiVersion}/group/list`,
         {
           headers: {
             Authorization: `Bearer ${accessToken}`,

@@ -11,6 +11,7 @@ import React from "react";
 import { useAuth } from "../../Context/AuthContext";
 import axios from "axios";
 import { toast } from "react-toastify";
+import { apiVersion, baseUrl } from "../../Config/EnvironmentConfig";
 
 const ArchiveProject = ({ open, onClose, data, handleRefresh }) => {
   const { accessToken } = useAuth();
@@ -18,7 +19,7 @@ const ArchiveProject = ({ open, onClose, data, handleRefresh }) => {
   const handleArchive = async () => {
     try {
       const response = await axios.post(
-        `https://flowbolt.onrender.com/api/v1/project/${data?.id}/archive`,
+        `${baseUrl}/${apiVersion}/project/${data?.id}/archive`,
         {},
         {
           headers: {
@@ -42,7 +43,9 @@ const ArchiveProject = ({ open, onClose, data, handleRefresh }) => {
 
   return (
     <Dialog open={open} onClose={onClose} maxWidth="sm" fullWidth>
-      <DialogTitle sx={{ fontWeight: 600, color: "success.main" }}>Archive Project</DialogTitle>
+      <DialogTitle sx={{ fontWeight: 600, color: "success.main" }}>
+        Archive Project
+      </DialogTitle>
 
       <DialogContent>
         <Box mt={1}>

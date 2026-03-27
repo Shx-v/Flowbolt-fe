@@ -35,6 +35,7 @@ import DeleteRole from "./DeleteRole";
 import EditRole from "./EditRole";
 import { usePopover } from "../../Hook/usePopover";
 import FilterListIcon from "@mui/icons-material/FilterList";
+import { apiVersion, baseUrl } from "../../Config/EnvironmentConfig";
 
 const Role = () => {
   const { accessToken } = useAuth();
@@ -73,14 +74,11 @@ const Role = () => {
 
   const handleGetRoles = async () => {
     try {
-      const response = await axios.get(
-        "https://flowbolt.onrender.com/api/v1/role",
-        {
-          headers: {
-            Authorization: `Bearer ${accessToken}`,
-          },
+      const response = await axios.get(`${baseUrl}/${apiVersion}/role`, {
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
         },
-      );
+      });
 
       if (response.data.success) {
         setRoles(response.data.data);
@@ -112,7 +110,7 @@ const Role = () => {
   const handleGetPermissions = async () => {
     try {
       const response = await axios.get(
-        "https://flowbolt.onrender.com/api/v1/role/permission",
+        `${baseUrl}/${apiVersion}/role/permission`,
         {
           headers: {
             Authorization: `Bearer ${accessToken}`,

@@ -15,8 +15,8 @@ const TicketDetailsPage = lazy(() => import("@/Page/Ticket/TicketDetails"));
 
 const RolePage = lazy(() => import("../Page/Role/Role"));
 const UserPage = lazy(() => import("../Page/User/User"));
-const GroupPage = lazy(() => import("../Page/Group/Group"));
-const GroupDetailsPage = lazy(() => import("../Page/Group/GroupDetails"));
+
+const ProfilePage = lazy(() => import("../Page/Profile/Profile"));
 
 export const commmonRoutes = [
   {
@@ -68,29 +68,8 @@ export const commmonRoutes = [
         element: <UserPage />,
       },
       {
-        path: "group",
-        children: [
-          {
-            index: true,
-            element: <GroupPage />,
-          },
-          {
-            path: ":groupId",
-            element: <GroupDetailsPage />,
-          },
-        ],
-      },
-      {
         path: "profile",
-        element: <SecondPage />,
-      },
-      {
-        path: "settings",
-        element: <SecondPage />,
-      },
-      {
-        path: "account",
-        element: <SecondPage />,
+        element: <ProfilePage />,
       },
     ],
   },

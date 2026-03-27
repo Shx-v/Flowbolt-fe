@@ -14,6 +14,7 @@ import React, { useMemo } from "react";
 import { toast } from "react-toastify";
 import axios from "axios";
 import { useAuth } from "../../Context/AuthContext";
+import { apiVersion, baseUrl } from "../../Config/EnvironmentConfig";
 
 const EditMember = ({ open, onClose, permissions = [], handleRefresh }) => {
   const { accessToken } = useAuth();
@@ -52,7 +53,7 @@ const EditMember = ({ open, onClose, permissions = [], handleRefresh }) => {
   const handleUpdateMember = async (values) => {
     try {
       const response = await axios.put(
-        `https://flowbolt.onrender.com/api/v1/project-member/${open.id}`,
+        `${baseUrl}/${apiVersion}/project-member/${open.id}`,
         values,
         {
           headers: {

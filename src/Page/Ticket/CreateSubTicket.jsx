@@ -13,6 +13,7 @@ import * as yup from "yup";
 import { useAuth } from "../../Context/AuthContext";
 import { useEffect, useState } from "react";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
+import { apiVersion, baseUrl } from "../../Config/EnvironmentConfig";
 
 const CreateSubTicket = ({ open, onClose, handleRefresh, ticket, users }) => {
   const { accessToken } = useAuth();
@@ -21,7 +22,7 @@ const CreateSubTicket = ({ open, onClose, handleRefresh, ticket, users }) => {
   const handleCreateSubTicket = async (values) => {
     try {
       const response = await axios.post(
-        "https://flowbolt.onrender.com/api/v1/ticket",
+        `${baseUrl}/${apiVersion}/ticket`,
         {
           project: values.projectId,
           title: values.title,
@@ -91,7 +92,7 @@ const CreateSubTicket = ({ open, onClose, handleRefresh, ticket, users }) => {
   const handleGetTicketTypes = async () => {
     try {
       const response = await axios.get(
-        "https://flowbolt.onrender.com/api/v1/ticket/types",
+        `${baseUrl}/${apiVersion}/ticket/types`,
         {
           headers: {
             Authorization: `Bearer ${accessToken}`,

@@ -14,6 +14,7 @@ import * as Yup from "yup";
 import { toast } from "react-toastify";
 import axios from "axios";
 import { useAuth } from "../../Context/AuthContext";
+import { apiVersion, baseUrl } from "../../Config/EnvironmentConfig";
 
 const ChangeOwner = ({ open, onClose, handleRefresh, data, users }) => {
   const { accessToken } = useAuth();
@@ -26,7 +27,7 @@ const ChangeOwner = ({ open, onClose, handleRefresh, data, users }) => {
   const handleUpdateOwner = async (ownerId) => {
     try {
       const response = await axios.post(
-        `https://flowbolt.onrender.com/api/v1/project/${data?.id}/transfer-ownership?newOwnerId=${ownerId}`,
+        `${baseUrl}/${apiVersion}/project/${data?.id}/transfer-ownership?newOwnerId=${ownerId}`,
         {},
         {
           headers: {

@@ -12,6 +12,7 @@ import { toast } from "react-toastify";
 import axios from "axios";
 import { useAuth } from "../../Context/AuthContext";
 import { useNavigate } from "react-router-dom";
+import { apiVersion, baseUrl } from "../../Config/EnvironmentConfig";
 
 const DeleteTicket = ({ open, onClose, data }) => {
   const { accessToken } = useAuth();
@@ -20,12 +21,12 @@ const DeleteTicket = ({ open, onClose, data }) => {
   const handleDelete = async () => {
     try {
       const response = await axios.delete(
-        `https://flowbolt.onrender.com/api/v1/ticket/${data?.id}`,
+        `${baseUrl}/${apiVersion}/ticket/${data?.id}`,
         {
           headers: {
             Authorization: `Bearer ${accessToken}`,
           },
-        }
+        },
       );
 
       if (response.data?.status === 200) {
@@ -38,7 +39,7 @@ const DeleteTicket = ({ open, onClose, data }) => {
       console.error("Error deleting ticket:", error);
       toast.error("Failed to delete ticket");
     } finally {
-        onClose();
+      onClose();
     }
   };
 
@@ -51,8 +52,7 @@ const DeleteTicket = ({ open, onClose, data }) => {
       <DialogContent>
         <Box mt={1}>
           <Typography variant="body1">
-            Are you sure you want to delete{" "}
-            <strong>{data?.title}</strong>?
+            Are you sure you want to delete <strong>{data?.title}</strong>?
           </Typography>
 
           <Typography variant="body2" color="text.secondary" mt={1}>
@@ -67,11 +67,7 @@ const DeleteTicket = ({ open, onClose, data }) => {
           Cancel
         </Button>
 
-        <Button
-          variant="contained"
-          color="error"
-          onClick={handleDelete}
-        >
+        <Button variant="contained" color="error" onClick={handleDelete}>
           Delete
         </Button>
       </DialogActions>

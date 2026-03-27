@@ -38,6 +38,7 @@ import DeleteTicket from "./DeleteTicket";
 import { usePopover } from "../../Hook/usePopover";
 import CommentSection from "./CommentSection";
 import AddCommentDialog from "./AddComment";
+import { apiVersion, baseUrl } from "../../Config/EnvironmentConfig";
 
 const options = ["LOW", "MEDIUM", "HIGH", "CRITICAL"];
 
@@ -60,7 +61,7 @@ const TicketDetails = () => {
   const handleUpdatePriority = async (priority) => {
     try {
       const response = await axios.patch(
-        `https://flowbolt.onrender.com/api/v1/ticket/priority`,
+        `${baseUrl}/${apiVersion}/ticket/priority`,
         {
           ticketId: ticketDetail?.id,
           priority: priority,
@@ -92,7 +93,7 @@ const TicketDetails = () => {
   const handleUpdateStatus = async (status) => {
     try {
       const response = await axios.patch(
-        `https://flowbolt.onrender.com/api/v1/ticket/status`,
+        `${baseUrl}/${apiVersion}/ticket/status`,
         {
           ticketId: ticketDetail?.id,
           status: status,
@@ -161,7 +162,7 @@ const TicketDetails = () => {
   const handleGetTicketDetails = async (ticketId) => {
     try {
       const response = await axios.get(
-        `https://flowbolt.onrender.com/api/v1/ticket/details/${ticketId}`,
+        `${baseUrl}/${apiVersion}/ticket/details/${ticketId}`,
         {
           headers: {
             Authorization: `Bearer ${accessToken}`,
@@ -249,7 +250,7 @@ const TicketDetails = () => {
   const handleGetMembers = async (id) => {
     try {
       const response = await axios.get(
-        `https://flowbolt.onrender.com/api/v1/project-member/members/${id}`,
+        `${baseUrl}/${apiVersion}/project-member/members/${id}`,
         {
           headers: {
             Authorization: `Bearer ${accessToken}`,
@@ -270,7 +271,7 @@ const TicketDetails = () => {
   const handleGetTransitions = async (type, status) => {
     try {
       const response = await axios.get(
-        `https://flowbolt.onrender.com/api/v1/ticket/status-transitions/${type}/${status}`,
+        `${baseUrl}/${apiVersion}/ticket/status-transitions/${type}/${status}`,
         {
           headers: {
             Authorization: `Bearer ${accessToken}`,
@@ -291,7 +292,7 @@ const TicketDetails = () => {
   const handleCreateComment = async (value) => {
     try {
       const response = await axios.post(
-        `https://flowbolt.onrender.com/api/v1/comment`,
+        `${baseUrl}/${apiVersion}/comment`,
         value,
         {
           headers: {

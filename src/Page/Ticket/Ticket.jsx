@@ -33,6 +33,7 @@ import { useAuth } from "../../Context/AuthContext";
 import { toast } from "react-toastify";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { apiVersion, baseUrl } from "../../Config/EnvironmentConfig";
 
 const Ticket = () => {
   const { accessToken } = useAuth();
@@ -44,14 +45,11 @@ const Ticket = () => {
 
   const handleGetTickets = async () => {
     try {
-      const response = await axios.get(
-        "https://flowbolt.onrender.com/api/v1/ticket",
-        {
-          headers: {
-            Authorization: `Bearer ${accessToken}`,
-          },
+      const response = await axios.get(`${baseUrl}/${apiVersion}/ticket`, {
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
         },
-      );
+      });
 
       if (response.data.status === 200) {
         setTickets(response.data.data);

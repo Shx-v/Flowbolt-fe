@@ -11,6 +11,7 @@ import { useFormik } from "formik";
 import { toast } from "react-toastify";
 import * as yup from "yup";
 import { useAuth } from "../../Context/AuthContext";
+import { apiVersion, baseUrl } from "../../Config/EnvironmentConfig";
 
 const CreateProject = ({ open, onClose, handleUpdate, users }) => {
   const { accessToken } = useAuth();
@@ -18,7 +19,7 @@ const CreateProject = ({ open, onClose, handleUpdate, users }) => {
   const handleCreateProject = async () => {
     try {
       const response = await axios.post(
-        "https://flowbolt.onrender.com/api/v1/project",
+        `${baseUrl}/${apiVersion}/project`,
         {
           name: formik.values.name,
           projectCode: formik.values.code,
@@ -29,7 +30,7 @@ const CreateProject = ({ open, onClose, handleUpdate, users }) => {
           headers: {
             Authorization: `Bearer ${accessToken}`,
           },
-        }
+        },
       );
 
       if (response.data.status === 201) {
@@ -55,7 +56,7 @@ const CreateProject = ({ open, onClose, handleUpdate, users }) => {
       .required("Project code is required")
       .matches(
         /^[A-Z0-9-_]+$/,
-        "Only uppercase letters, numbers, - and _ allowed"
+        "Only uppercase letters, numbers, - and _ allowed",
       ),
     description: yup
       .string()

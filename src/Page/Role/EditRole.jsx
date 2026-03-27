@@ -14,6 +14,7 @@ import {
   TextField,
   Typography,
 } from "@mui/material";
+import { apiVersion, baseUrl } from "../../Config/EnvironmentConfig";
 
 const EditRole = ({ open, onClose, handleRefresh, permissions }) => {
   const { accessToken } = useAuth();
@@ -57,7 +58,7 @@ const EditRole = ({ open, onClose, handleRefresh, permissions }) => {
   const handleEditRole = async (values) => {
     try {
       const response = await axios.put(
-        `https://flowbolt.onrender.com/api/v1/role/${open?.id}`,
+        `${baseUrl}/${apiVersion}/role/${open?.id}`,
         values,
         {
           headers: {

@@ -12,6 +12,7 @@ import { toast } from "react-toastify";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../Context/AuthContext";
+import { apiVersion, baseUrl } from "../../Config/EnvironmentConfig";
 
 const SuspendProject = ({ open, onClose, data }) => {
   const navigate = useNavigate();
@@ -20,7 +21,7 @@ const SuspendProject = ({ open, onClose, data }) => {
   const handleSuspend = async () => {
     try {
       const response = await axios.post(
-        `https://flowbolt.onrender.com/api/v1/project/${data?.id}/suspend`,
+        `${baseUrl}/${apiVersion}/project/${data?.id}/suspend`,
         {},
         {
           headers: {

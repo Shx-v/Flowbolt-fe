@@ -20,6 +20,7 @@ import * as Yup from "yup";
 import axios from "axios";
 import { toast } from "react-toastify";
 import { useAuth } from "../../Context/AuthContext";
+import { apiVersion, baseUrl } from "../../Config/EnvironmentConfig";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -53,14 +54,14 @@ const Login = () => {
       const encodedCredentials = btoa(credentials);
 
       const response = await axios.post(
-        "https://flowbolt.onrender.com/api/v1/auth/login",
+        `${baseUrl}/${apiVersion}/auth/login`,
         {},
         {
           headers: {
             Authorization: `Basic ${encodedCredentials}`,
             "Content-Type": "application/json",
           },
-        }
+        },
       );
 
       console.log("Login successful:", response.data);
@@ -81,12 +82,12 @@ const Login = () => {
   const handleGetUserDetails = async (token) => {
     try {
       const response = await axios.get(
-        "https://flowbolt.onrender.com/api/v1/user/detail",
+        `${baseUrl}/${apiVersion}/user/detail`,
         {
           headers: {
             Authorization: `Bearer ${token.token}`,
           },
-        }
+        },
       );
 
       console.log("User details fetched:", response.data);

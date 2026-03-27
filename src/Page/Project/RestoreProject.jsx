@@ -11,6 +11,7 @@ import axios from "axios";
 import React from "react";
 import { useAuth } from "../../Context/AuthContext";
 import { toast } from "react-toastify";
+import { apiVersion, baseUrl } from "../../Config/EnvironmentConfig";
 
 const RestoreProject = ({ open, onClose, data, handleRefresh }) => {
   const { accessToken } = useAuth();
@@ -18,7 +19,7 @@ const RestoreProject = ({ open, onClose, data, handleRefresh }) => {
   const handleRestore = async () => {
     try {
       const response = await axios.post(
-        `https://flowbolt.onrender.com/api/v1/project/${data?.id}/restore`,
+        `${baseUrl}/${apiVersion}/project/${data?.id}/restore`,
         {},
         {
           headers: {

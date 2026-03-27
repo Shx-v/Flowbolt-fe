@@ -21,6 +21,7 @@ import axios from "axios";
 import { useAuth } from "../../Context/AuthContext";
 import { toast } from "react-toastify";
 import CreateUser from "./CreateUser";
+import { apiVersion, baseUrl } from "../../Config/EnvironmentConfig";
 
 const User = () => {
   const { accessToken } = useAuth();
@@ -64,14 +65,11 @@ const User = () => {
 
   const handleGetUsers = async () => {
     try {
-      const response = await axios.get(
-        "https://flowbolt.onrender.com/api/v1/user",
-        {
-          headers: {
-            Authorization: `Bearer ${accessToken}`,
-          },
+      const response = await axios.get(`${baseUrl}/${apiVersion}/user`, {
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
         },
-      );
+      });
 
       if (response.data.success) {
         setUsers(response.data.data);

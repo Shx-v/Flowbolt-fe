@@ -29,7 +29,7 @@ const ProfilePopover = (props) => {
   const handleLogout = async () => {
     // try {
     //   const response = await axios.post(
-    //     "https://flowbolt.onrender.com/api/v1/auth/logout",
+    //     "${baseUrl}/${apiVersion}/auth/logout",
     //     {},
     //     {
     //       headers: {
@@ -96,11 +96,16 @@ const ProfilePopover = (props) => {
           </Typography>
         </Stack>
 
-        {/* <Divider sx={{ borderColor: "divider" }} />
+        <Divider sx={{ borderColor: "divider" }} />
 
         <List dense>
           <ListItem disablePadding>
-            <ListItemButton onClick={() => navigate("/profile")}>
+            <ListItemButton
+              onClick={() => {
+                navigate("/profile");
+                onClose();
+              }}
+            >
               <ListItemIcon>
                 <AccountCircleIcon fontSize="small" color="primary" />
               </ListItemIcon>
@@ -108,7 +113,7 @@ const ProfilePopover = (props) => {
             </ListItemButton>
           </ListItem>
 
-          <ListItem disablePadding>
+          {/* <ListItem disablePadding>
             <ListItemButton onClick={() => navigate("/settings")}>
               <ListItemIcon>
                 <SettingsIcon fontSize="small" color="primary" />
@@ -124,8 +129,8 @@ const ProfilePopover = (props) => {
               </ListItemIcon>
               <ListItemText primary="My Account" />
             </ListItemButton>
-          </ListItem>
-        </List> */}
+          </ListItem> */}
+        </List>
 
         <Divider sx={{ borderColor: "divider" }} />
 

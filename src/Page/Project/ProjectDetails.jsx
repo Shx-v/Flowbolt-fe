@@ -36,6 +36,7 @@ import AddMember from "./AddMember";
 import { ProjectMemberCard } from "./MemberCard";
 import EditMember from "./EditMember";
 import DeleteMember from "./DeleteMember";
+import { apiVersion, baseUrl } from "../../Config/EnvironmentConfig";
 
 const ProjectDetails = () => {
   const { projectId } = useParams();
@@ -151,7 +152,7 @@ const ProjectDetails = () => {
   const handleGetProjectDetails = async (projectId) => {
     try {
       const response = await axios.get(
-        `https://flowbolt.onrender.com/api/v1/project/${projectId}`,
+        `${baseUrl}/${apiVersion}/project/${projectId}`,
         {
           headers: {
             Authorization: `Bearer ${accessToken}`,
@@ -173,7 +174,7 @@ const ProjectDetails = () => {
   const handleGetTickets = async (projectId) => {
     try {
       const response = await axios.get(
-        `https://flowbolt.onrender.com/api/v1/ticket/project/${projectId}`,
+        `${baseUrl}/${apiVersion}/ticket/project/${projectId}`,
         {
           headers: {
             Authorization: `Bearer ${accessToken}`,
@@ -195,7 +196,7 @@ const ProjectDetails = () => {
   const handleGetUsers = async () => {
     try {
       const response = await axios.get(
-        "https://flowbolt.onrender.com/api/v1/user/list",
+        `${baseUrl}/${apiVersion}/user/list`,
         {
           headers: {
             Authorization: `Bearer ${accessToken}`,
@@ -216,7 +217,7 @@ const ProjectDetails = () => {
   const handleGetProjectPermissions = async () => {
     try {
       const response = await axios.get(
-        `https://flowbolt.onrender.com/api/v1/project-member/permissions`,
+        `${baseUrl}/${apiVersion}/project-member/permissions`,
         {
           headers: {
             Authorization: `Bearer ${accessToken}`,
@@ -238,7 +239,7 @@ const ProjectDetails = () => {
   const handleGetMembers = async (projectId) => {
     try {
       const response = await axios.get(
-        `https://flowbolt.onrender.com/api/v1/project-member/${projectId}`,
+        `${baseUrl}/${apiVersion}/project-member/${projectId}`,
         {
           headers: {
             Authorization: `Bearer ${accessToken}`,
@@ -259,7 +260,7 @@ const ProjectDetails = () => {
   const handleDeleteMember = async () => {
     try {
       const response = await axios.delete(
-        `https://flowbolt.onrender.com/api/v1/project-member/${deleteMemberOpen?.id}`,
+        `${baseUrl}/${apiVersion}/project-member/${deleteMemberOpen?.id}`,
         {
           headers: {
             Authorization: `Bearer ${accessToken}`,
